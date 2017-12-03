@@ -1,8 +1,9 @@
 // variables
 @brown: #b2876f;
 
-*, *:before, *:after {
-	font-family: sans-serif;
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
 }
@@ -19,7 +20,7 @@ a {
 .main-img {
   height: 100px;
   width: 100px;
-  margin: 25px auto;
+  margin: 25px auto 0 auto;
   display: block;
   border-radius: 50%;
   border: 3px solid darken(@brown, 25%);
@@ -27,13 +28,14 @@ a {
 
 h1 {
   text-align: center;
-  margin: 40px;
+  margin: 25px auto 40px auto;
+  font-weight: 300;
+  text-transform: uppercase;
   @media (max-width: 767px) {
-    font-size: 20px;
+    font-size: 22px;
   }
 }
 
-// clean up the stuff below
 .hologram-btn {
 	display: block;
 	margin: 0 auto;
@@ -48,23 +50,26 @@ h1 {
   text-transform: uppercase;
   position: relative;
   transition: all 250ms ease;
-}
-.hologram-btn:before, .hologram-btn:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border: 2px solid;
-  transition: .25s;
-}
-.hologram-btn:before {
-  transform: translateX(-0.25em) translateY(0.25em);
-}
-.hologram-btn:after {
-  transform: translateX(0.25em) translateY(-0.25em);
-}
-.hologram-btn:hover:before, .hologram-btn:hover:after {
-  transform: translateX(0) translateY(0);
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid;
+    transition: .25s;
+  }
+  &:before {
+    transform: translateX(-0.25em) translateY(0.25em);
+  }
+  &:after {
+    transform: translateX(0.25em) translateY(-0.25em);
+  }
+  &:hover:before,
+  &:hover:after {
+    transform: translateX(0) translateY(0);
+  }
 }
