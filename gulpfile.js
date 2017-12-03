@@ -3,7 +3,11 @@ var less = require('gulp-less');
 var path = require('path');
 var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
+var watch = require('gulp-watch');
 
+gulp.task('watch', function () {
+  gulp.watch('./src/*.less', ['less']);
+});
 
 gulp.task('less', function () {
   return gulp.src('./src/**/*.less')
@@ -17,4 +21,4 @@ gulp.task('less', function () {
     .pipe(gulp.dest('./dist/'));
 });
 
-gulp.task('default', [ 'less' ]);
+gulp.task('default', [ 'less', 'watch' ]);
