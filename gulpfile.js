@@ -6,17 +6,17 @@ var rename = require('gulp-rename');
 var watch = require('gulp-watch');
 var connect = require('gulp-connect');
 
-
 gulp.task('less', function () {
-  return gulp.src('./src/**/*.less')
-    .pipe(less({
-      paths: [ path.join(__dirname, 'less', 'includes') ]
-    }))
-    .pipe(cssmin().on('error', function(err) {
-      console.log(err);
-    }))
+  return gulp.src('less/**/*.less')
+    .pipe(less())
+    .pipe(cssmin())
     .pipe(rename({suffix: '.min'}))
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('css'))
+    .pipe(connect.reload());
+});
+
+gulp.task('html', function () {
+  return gulp.src('index.html')
     .pipe(connect.reload());
 });
 
@@ -27,7 +27,8 @@ gulp.task('connect', function () {
 });
 
 gulp.task('watch', function () {
-  gulp.watch('./src/*.less', ['less']);
+  gulp.watch('less/*.less', ['less']);
+  gulp.watch('index.html', ['html']);
 });
 
-gulp.task('default', [ 'less', 'watch', 'connect' ]);
+gulp.task('default', [ 'less', 'html', 'watch', 'connect' ]);
