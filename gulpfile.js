@@ -5,6 +5,7 @@ var cssmin = require('gulp-cssmin');
 var rename = require('gulp-rename');
 var watch = require('gulp-watch');
 var connect = require('gulp-connect');
+var open = require('gulp-open');
 
 gulp.task('less', function () {
   return gulp.src('less/**/*.less')
@@ -31,4 +32,9 @@ gulp.task('watch', function () {
   gulp.watch('index.html', ['html']);
 });
 
-gulp.task('default', [ 'less', 'html', 'watch', 'connect' ]);
+gulp.task('open', function () {
+  gulp.src('index.html')
+  .pipe(open());
+});
+
+gulp.task('default', [ 'less', 'html', 'watch', 'connect', 'open' ]);
