@@ -1,13 +1,15 @@
-var gulp = require('gulp');
-var less = require('gulp-less');
-var path = require('path');
-var cssmin = require('gulp-cssmin');
-var rename = require('gulp-rename');
-var watch = require('gulp-watch');
-var connect = require('gulp-connect');
-var open = require('gulp-open');
+'use strict';
 
-gulp.task('less', function () {
+const gulp = require('gulp');
+const less = require('gulp-less');
+const path = require('path');
+const cssmin = require('gulp-cssmin');
+const rename = require('gulp-rename');
+const watch = require('gulp-watch');
+const connect = require('gulp-connect');
+const open = require('gulp-open');
+
+gulp.task('less', () => {
   return gulp.src('less/**/*.less')
     .pipe(less())
     .pipe(cssmin())
@@ -16,25 +18,25 @@ gulp.task('less', function () {
     .pipe(connect.reload());
 });
 
-gulp.task('html', function () {
+gulp.task('html', () => {
   return gulp.src('index.html')
     .pipe(connect.reload());
 });
 
-gulp.task('connect', function () {
+gulp.task('connect', () => {
   connect.server({
     livereload: true
   });
 });
 
-gulp.task('watch', function () {
+gulp.task('watch', () => {
   gulp.watch('less/*.less', ['less']);
   gulp.watch('index.html', ['html']);
 });
 
-gulp.task('open', function () {
+gulp.task('open', () => {
   gulp.src('index.html')
-  .pipe(open());
+  .pipe(open({uri: 'http://localhost:8080/'}));
 });
 
 gulp.task('default', [ 'less', 'html', 'watch', 'connect', 'open' ]);
