@@ -18,11 +18,18 @@ body {
   color: darken(@brown, 25%);
   background: linear-gradient(180deg, @rosegold, #fff 30%) no-repeat;
   padding-top: 25px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a {
 	text-decoration: none;
 	font-size: 1em;
+}
+
+.top {
+  flex: 1;
 }
 
 .main-img {
@@ -77,4 +84,12 @@ h1 {
   &:hover:after {
     transform: translateX(0) translateY(0);
   }
+
+
+}
+
+
+.footer {
+  text-align: center;
+  padding: 50px 0;
 }
