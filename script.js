@@ -1,9 +1,4 @@
 
-$('.hologram-btn').click(function () {
-  $('.modal').show('500');
-});
-
-$('.modal a').click(function (e) {
-  e.preventDefault;
-  $('.modal').hide('500');
-});
+const theDate = new Date().getFullYear();
+const footer = document.getElementById('copywrite');
+footer.innerHTML = `&copy;${theDate} Hannah De Los Reyes`;
