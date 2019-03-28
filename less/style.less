@@ -52,6 +52,36 @@ h1 {
 p {
   text-align: center;
   padding-bottom: 25px;
+  line-height: 2em;
+}
+
+.portfolio {
+  color: purple;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  font-size: 2.2em;
+  padding-right: 40px;
+}
+
+li {
+  margin: 15px;
+  list-style-type: none;
+  color: orange;
+  &.grow {
+    transition: all .2s ease-in-out;
+  }
+    &:hover {
+      transform: scale(1.4);
+      opacity: 0.8;
+      cursor: pointer;
+      }
+}
+
+i {
+  color: darken(@brown, 10%);
 }
 
 .hologram-btn {
